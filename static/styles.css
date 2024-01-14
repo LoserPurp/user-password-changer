@@ -1,0 +1,126 @@
+:root{
+    --primary-color: #292c2e;
+    --secondary-color: #292c2e;
+    --tertiary-color: #48435C;
+    --text-color: #d2e4c5;
+    --alert-color: #c90000;
+    --disabled-ok-button-color: #5e5166;
+    --ok-button-color: #603F8B;
+    --ok-button-hover-color: #3d245f;
+
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background: var(--primary-color) !important;
+    color: var(--text-color) !important;
+    font-family: 'Roboto', sans-serif;
+}
+p, .buttonChange {
+    margin: 10px 0 10px 0;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formComposer {
+    /* box-shadow: black 0px 0px 15px; */
+    box-shadow: black 0px 0px 54px;
+    background: var(--secondary-color);
+    display: grid;
+    width: 45vw;
+    max-width: 400px;
+    min-width: 170px;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.title {
+    text-align: center;
+    font-size: 25px;
+    z-index: 5;
+    position: relative;
+}
+
+.buttonChange {
+    background-color: var(--disabled-ok-button-color);
+    height: 40px;
+    color: var(--text-color);
+    border: 0;
+    border-radius: 10px;
+    transition: background-color .2s;
+}
+
+.buttonChangeEnabled {
+    background-color: var(--ok-button-color);
+    color: var(--text-color);
+    transition: background-color .2s;
+}
+
+.buttonChangeEnabled:hover {
+    background-color: var(--ok-button-hover-color);
+    color: var(--text-color);
+    transition: background-color .2s;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background: var(--secondary-color);
+    width: 100%;
+    padding-left: 10px;
+    box-shadow: black 0px 0px 15px;
+}
+
+ul.messages {
+    text-align: center;
+    list-style:none;
+    color: var(--alert-color);
+}
+
+.passwordContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#passwordStrength {
+    width: 100%;
+    height: 10px;
+    background-color: #eee;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+
+#strengthIndicator {
+    height: 100%;
+    background-color: #e74c3c;
+    border-radius: 25px;
+    transition: background-color .4s;
+}
+
+.weak {
+    background-color: #e74c3c !important;
+}
+
+.medium {
+    background-color: #fd7340 !important;
+}
+.high {
+    background-color: #f39c12 !important;
+}
+.strong {
+    background-color: #2ecc71 !important;
+} 
+
+
+input#oldPassword, input#repeatPassword, input#newPassword    {
+    width: calc(100% - 32px);
+}
+i#newPasswordshowPassword, i#repeatPasswordshowPassword, #oldPasswordshowPassword {
+    width: 20px;
+    text-align: center;
+}

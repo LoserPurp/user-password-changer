@@ -1,0 +1,7 @@
+{
+    "secretKey": "2jov0bbqphj8sfa",
+    "serverAdress": "ldaps://192.168.10.160:636",
+    "domain": "@KLEPPE",
+    "searchGroup": "OU=brukere,DC=kleppe,DC=local",
+    "searchUser": "(memberOf=CN=ChangePassword,OU=grupper,DC=kleppe,DC=local))"
+}

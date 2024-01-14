@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Your Password</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <p class="title">Change Your Password</p>
+    <div class="formContainer">
+        <form class="formComposer" method="post">
+            <p><i class="fa-solid fa-user"></i> Username:</p>
+            <input type="text" name="username" required>
+            <p><i class="fa-solid fa-lock"></i> Old Password:</p>
+            
+            <div class="passwordOldPassword">
+                <input type="password" id="oldPassword" name="old_password" required>
+                <i id="oldPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('oldPassword')"></i>
+            </div>
+
+            <div class="passwordContainer"> 
+
+                <div class="passwordNewPassword">
+                    <p><i class="fa-solid fa-key"></i> New Password:</p>
+                    <input type="password" id="newPassword" name="new_password" required>
+                    <i id="newPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('newPassword')"></i>
+                </div>
+
+                <div class="passwordRetypePassword">
+                    <p><i class="fa-solid fa-unlock"></i> Retype Password:</p>
+                    <input type="password" id="repeatPassword" name="repeat_password" required>
+                    <i id="repeatPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('repeatPassword')"></i>
+                </div>
+            </div>
+
+            <div id="passwordStrength">
+                <div id="strengthIndicator"></div>
+              </div>
+            <button class="buttonChange" id="submitButton" type="submit" disabled>Change Password</button>
+        </form>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="changeMessage">{{ message}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <footer>
+        <p>Made by Robin Kleppe</p>
+        <p>Styling by OlaYZen</p>
+        <!-- <p class="license">The site operates under the MIT License.</p>   -->
+    </footer>
+
+</body>
+<script src="https://kit.fontawesome.com/47dbf3c43e.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</html>
