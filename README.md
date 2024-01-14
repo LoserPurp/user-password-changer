@@ -6,7 +6,7 @@ Do not expect any updates to this project after version 3.0.
 If there is something wrong with the code or something you would like to see added feel free to tell me about to.
 
 This project allows users to change their own password from a simple and easy-to-use webUI.
-All you need a Windows server running LDAP!
+All you need is a Windows server running LDAPS!
 
 # Installation
 Installation guide is not ready yet!
