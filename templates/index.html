@@ -39,17 +39,15 @@
             <div id="passwordStrength">
                 <div id="strengthIndicator"></div>
               </div>
-            <button class="buttonChange" id="submitButton" type="submit" disabled>Change Password</button>
+                <button class="buttonChange" id="submitButton" type="submit" >Change Password</button> <!--- disabled -->
         </form>
     </div>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
             <ul class="messages">
-                {% for message in messages %}
-                    <li class="changeMessage">{{ message}}</li>
-                {% endfor %}
+                <div class="{{ category }}">{{ message }}</div>
             </ul>
-        {% endif %}
+        {% endfor %}
     {% endwith %}
     <footer>
         <p></p>

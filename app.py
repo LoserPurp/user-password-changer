@@ -20,8 +20,8 @@ def change_password(username, old_password, new_password):
         server = Server(config["serverAdress"], use_ssl=True)
         #Connect to the AD server
         with Connection(server, user=username + config["domain"], password=old_password, authentication=SIMPLE) as conn:
-            jes = conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
-            print(jes)
+            connect = conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
+            print(f"connection status: {connect}")
 
             if len(conn.entries) == 1:
                 user_dn = conn.entries[0].entry_dn
@@ -46,16 +46,20 @@ def index():
         repeat_password = request.form.get('repeat_password')
 
         if not username or not old_password or not new_password:
-            flash('All fields are required!')
+            flash('All fields are required!', 'error')
         elif new_password != repeat_password:
-            flash('Both password feelds must be the same')
+            flash('Both password feelds must be the same', 'error')
         elif change_password(username, old_password, new_password):
-            flash('Password changed successfully!')
+            flash('Password changed successfully!', 'info')
         else:
-            flash('Incorrect password or user is not available to change password. Contact the server admin if you believe this is an error!')
+            flash('Incorrect password or user is not available to change password. Contact the server admin if you believe this is an error!', 'error')
 
     return render_template('index.html')
 
 if __name__ == "__main__":
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=7234)
+    app.run(debug=True, host="0.0.0.0", port="7234")  #Do not use in production, only for debugging
+
+
+    # For use in production
+    # from waitress import serve
+    # serve(app, host="0.0.0.0", port=7234)

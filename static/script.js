@@ -17,10 +17,10 @@ function checkPassword() {
   updateStrengthIndicator(strength);
 
   if (newPassword === repeatPassword && newPassword !== '' && repeatPassword !== '' && calculatePasswordStrength(password) == 'strong') {
-    submitButton.removeAttribute('disabled');
+    // submitButton.removeAttribute('disabled');
     submitButton.classList.add('buttonChangeEnabled');
   } else {
-    submitButton.setAttribute('disabled', 'disabled');
+    // submitButton.setAttribute('disabled', 'disabled');
     submitButton.classList.remove('buttonChangeEnabled');
   }
 }

@@ -3,7 +3,6 @@
     --secondary-color: #292c2e;
     --tertiary-color: #48435C;
     --text-color: #d2e4c5;
-    --alert-color: #c90000;
     --disabled-ok-button-color: #5e5166;
     --ok-button-color: #603F8B;
     --ok-button-hover-color: #3d245f;
@@ -82,7 +81,6 @@ footer {
 ul.messages {
     text-align: center;
     list-style:none;
-    color: var(--alert-color);
 }
 
 .passwordContainer {
@@ -132,4 +130,12 @@ a {
     text-decoration: none;
     color: inherit;
     cursor: text;
+}
+
+.info {
+    color: lightgreen;
+}
+
+.error {
+    color: lightcoral;
 }
