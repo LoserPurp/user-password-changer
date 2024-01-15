@@ -102,10 +102,9 @@ ul.messages {
     transition: background-color .4s;
 }
 
-#githubLink {
-    display: flex;
-    text-align: right;
-}
+/* #githubLink {
+    gjer sann den e på venste sida
+} */
 
 .weak {
     background-color: #e74c3c !important;
