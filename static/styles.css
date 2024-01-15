@@ -74,6 +74,9 @@ footer {
     width: 100%;
     padding-left: 10px;
     box-shadow: black 0px 0px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 ul.messages {
@@ -102,10 +105,6 @@ ul.messages {
     transition: background-color .4s;
 }
 
-/* #githubLink {
-    gjer sann den e på venste sida
-} */
-
 .weak {
     background-color: #e74c3c !important;
 }
@@ -127,4 +126,10 @@ input#oldPassword, input#repeatPassword, input#newPassword    {
 i#newPasswordshowPassword, i#repeatPasswordshowPassword, #oldPasswordshowPassword {
     width: 20px;
     text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: text;
 }
