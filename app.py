@@ -4,7 +4,7 @@ from ldap3 import SIMPLE, SUBTREE
 import json
 
 Author = "Robin Kleppe"
-Version = "2.2"
+Version = "2.3"
 
 #Loads config file
 with open('config.json', 'r') as file:
