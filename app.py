@@ -36,13 +36,6 @@ def change_password(username, old_password, new_password):
         print(f"An error occurred: {e}")
         return False
 
-@app.before_request
-def before_request():
-    if request.endpoint and request.endpoint != 'static':
-        # Clear session on each request, excluding static files
-        session.clear()
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
