@@ -36,6 +36,12 @@ def change_password(username, old_password, new_password):
         print(f"An error occurred: {e}")
         return False
 
+@app.before_request
+def before_request():
+    if request.endpoint and request.endpoint != 'static':
+        # Clear session on each request, excluding static files
+        session.clear()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -54,11 +60,12 @@ def index():
         else:
             flash('Incorrect password or user is not available to change password. Contact the server admin if you believe this is an error!', 'error')
 
+    # session.clear()
+
     return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port="7234")  #Do not use in production, only for debugging
-
 
     # For use in production
     # from waitress import serve

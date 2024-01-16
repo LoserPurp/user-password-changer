@@ -11,10 +11,10 @@
 <body>
     <p class="title">Change Your Password</p>
     <div class="formContainer">
-        <form class="formComposer" method="post">
-            <p><i class="fa-solid fa-user"></i> Username:</p>
+        <form id="formContainer" class="formComposer" autocomplete="off" method="post">
+            <p><i class="fa-solid fa-user"></i> Username</p>
             <input type="text" name="username" required>
-            <p><i class="fa-solid fa-lock"></i> Old Password:</p>
+            <p><i class="fa-solid fa-lock"></i> Old Password</p>
             
             <div class="passwordOldPassword">
                 <input type="password" id="oldPassword" name="old_password" required>
@@ -24,13 +24,13 @@
             <div class="passwordContainer"> 
 
                 <div class="passwordNewPassword">
-                    <p><i class="fa-solid fa-key"></i> New Password:</p>
+                    <p><i class="fa-solid fa-key"></i> New Password</p>
                     <input type="password" id="newPassword" name="new_password" required>
                     <i id="newPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('newPassword')"></i>
                 </div>
 
                 <div class="passwordRetypePassword">
-                    <p><i class="fa-solid fa-unlock"></i> Retype Password:</p>
+                    <p><i class="fa-solid fa-unlock"></i> Retype Password</p>
                     <input type="password" id="repeatPassword" name="repeat_password" required>
                     <i id="repeatPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('repeatPassword')"></i>
                 </div>
@@ -38,8 +38,11 @@
 
             <div id="passwordStrength">
                 <div id="strengthIndicator"></div>
+                <div class="tooltip"><i class="fa-solid fa-circle-info"></i>
+                    <span class="tooltiptext">Lorem Ipsum</span>
+                  </div>
               </div>
-                <button class="buttonChange" id="submitButton" type="submit" >Change Password</button> <!--- disabled -->
+                <button class="buttonChange" id="submitButton" onclick="submitForm()" disabled>Change Password</button>
         </form>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -50,12 +53,9 @@
         {% endfor %}
     {% endwith %}
     <footer>
-        <p></p>
-        <p>Made by LoserPurp</p>
-        <p>Styling by OlaYZen</p>
-        <a id="CC" href="https://github.com/LoserPurp/user-password-changer/blob/main/LICENSE" target="_blank">Copyright (c) 2024 LoserPurp</a>
-        <a id="githubLink" href="https://github.com/LoserPurp/user-password-changer" target="_blank">Github</a>
-        <p></p>
+        <a href="https://github.com/LoserPurp" target="_blank">Made by LoserPurp</a>
+        <a href="https://github.com/OlaYZen" target="_blank">Styling by OlaYZen</a>
+        <a href="https://github.com/LoserPurp/user-password-changer" target="_blank">Github</a>
     </footer>
 
 </body>

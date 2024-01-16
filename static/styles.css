@@ -1,11 +1,38 @@
 :root{
-    --primary-color: #292c2e;
+    /* Old color scheme */
+
+    /* --primary-color: #292c2e;
     --secondary-color: #292c2e;
-    --tertiary-color: #48435C;
+    --tertiary-color: #494949;
+
     --text-color: #d2e4c5;
-    --disabled-ok-button-color: #5e5166;
+    --reverse-text-color: black;
+
     --ok-button-color: #603F8B;
     --ok-button-hover-color: #3d245f;
+
+    --weak-password-indicator: #e74c3c;
+    --medium-password-indicator: #fd7340;
+    --high-password-indicator: #f39c12;
+    --strong-password-indicator: #2ecc71; */
+
+    
+    /* New color scheme. Modified from https://stats.purplexity.no/ */
+
+    --primary-color: #1c1c1d;
+    --secondary-color: #353535;
+    --tertiary-color: #6f6e6e;
+
+    --text-color: white;
+    --reverse-text-color: black;
+    
+    --ok-button-color: #6f6e6e;
+    --ok-button-hover-color: #9bbb58;
+
+    --weak-password-indicator: #c0504e;
+    --medium-password-indicator: #fd7340;
+    --high-password-indicator: #bf8f19;
+    --strong-password-indicator: #9bbb58;
 
 }
 
@@ -15,24 +42,30 @@ html, body {
     background: var(--primary-color) !important;
     color: var(--text-color) !important;
     font-family: 'Roboto', sans-serif;
+    height: calc(100% - 20px);
+    top: 0;
+    position: relative;
 }
 p, .buttonChange {
     margin: 10px 0 10px 0;
+    font-size: larger;
 }
 
 .formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: calc(100% - 151px);
+    justify-content: center;
 }
 
 .formComposer {
     /* box-shadow: black 0px 0px 15px; */
-    box-shadow: black 0px 0px 54px;
+    box-shadow: var(--reverse-text-color) 0px 0px 54px;
     background: var(--secondary-color);
     display: grid;
     width: 45vw;
-    max-width: 400px;
+    max-width: 540px;
     min-width: 170px;
     padding: 25px;
     border-radius: 15px;
@@ -43,10 +76,12 @@ p, .buttonChange {
     font-size: 25px;
     z-index: 5;
     position: relative;
+    margin: 0;
+    padding: 50px 0 0 0;
 }
 
 .buttonChange {
-    background-color: var(--disabled-ok-button-color);
+    background-color: var(--ok-button-color);
     height: 40px;
     color: var(--text-color);
     border: 0;
@@ -54,7 +89,13 @@ p, .buttonChange {
     transition: background-color .2s;
 }
 
-.buttonChangeEnabled {
+.buttonChange:hover {
+    background-color: var(--ok-button-hover-color);
+    color: var(--text-color);
+    transition: background-color .2s;
+} 
+
+/* .buttonChangeEnabled {
     background-color: var(--ok-button-color);
     color: var(--text-color);
     transition: background-color .2s;
@@ -64,18 +105,28 @@ p, .buttonChange {
     background-color: var(--ok-button-hover-color);
     color: var(--text-color);
     transition: background-color .2s;
-}
+} */
 
 footer {
     position: fixed;
     bottom: 0;
     background: var(--secondary-color);
     width: 100%;
-    padding-left: 10px;
-    box-shadow: black 0px 0px 15px;
+    /* padding-left: 10px; */
+    box-shadow: var(--reverse-text-color) 0px 0px 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    height: 40px;
+}
+
+input{
+    color: var(--text-color);
+    background: var(--tertiary-color);
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 20px;
 }
 
 ul.messages {
@@ -90,31 +141,36 @@ ul.messages {
 
 #passwordStrength {
     width: 100%;
-    height: 10px;
-    background-color: #eee;
+    height: 17px;
+    background-color: transparent;
     margin-top: 10px;
     border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #strengthIndicator {
-    height: 100%;
-    background-color: #e74c3c;
+    height: 10px;
+    background-color: var(--weak-password-indicator);
     border-radius: 25px;
     transition: background-color .4s;
+    width: calc(100% - 28px);
+    align-self: center;
 }
 
 .weak {
-    background-color: #e74c3c !important;
+    background-color: var(--weak-password-indicator) !important;
 }
 
 .medium {
-    background-color: #fd7340 !important;
+    background-color: var(--medium-password-indicator) !important;
 }
 .high {
-    background-color: #f39c12 !important;
+    background-color: var(--high-password-indicator) !important;
 }
 .strong {
-    background-color: #2ecc71 !important;
+    background-color: var(--strong-password-indicator) !important;
 } 
 
 
@@ -133,9 +189,68 @@ a {
 }
 
 .info {
-    color: lightgreen;
+    color: var(--strong-password-indicator);
 }
 
 .error {
-    color: lightcoral;
+    color: var(--weak-password-indicator);
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; */
+    right: 6px;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 15px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--primary-color) transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+@media (max-width: 800px){
+    .formComposer {
+        width: 100%;
+        max-width: calc(100vw - 100px);
+    }
+    .passwordContainer {
+        flex-direction: column;
+    }
+    footer {
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    p, .buttonChange {
+        font-size: auto;
+    }
 }

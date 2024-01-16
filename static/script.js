@@ -11,17 +11,20 @@ repeatPasswordInput.addEventListener('input', checkPassword);
 
 function checkPassword() {
   const newPassword = newPasswordInput.value;
+  const repeatPassword = repeatPasswordInput.value;
 
   const strength = calculatePasswordStrength(newPassword);
 
   updateStrengthIndicator(strength);
 
-  if (newPassword === repeatPassword && newPassword !== '' && repeatPassword !== '' && calculatePasswordStrength(password) == 'strong') {
-    // submitButton.removeAttribute('disabled');
+  if ((strength == 'strong' || strength == 'high') && newPassword == repeatPassword)  {
+    submitButton.removeAttribute('disabled');
     submitButton.classList.add('buttonChangeEnabled');
+    return true;
   } else {
-    // submitButton.setAttribute('disabled', 'disabled');
+    submitButton.setAttribute('disabled', 'disabled');
     submitButton.classList.remove('buttonChangeEnabled');
+    return false;
   }
 }
 
@@ -75,3 +78,10 @@ function togglePassword(input) {
   }
 }
 
+function submitForm() {
+  var frm = document.getElementsByName('formContainer')[0];
+  frm.submit(); // Submit the form
+  frm.reset();  // Reset all form data
+  
+  return false; // Prevent page refresh
+}
