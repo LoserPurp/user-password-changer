@@ -89,23 +89,15 @@ p, .buttonChange {
     transition: background-color .2s;
 }
 
-.buttonChange:hover {
-    background-color: var(--ok-button-hover-color);
-    color: var(--text-color);
-    transition: background-color .2s;
-} 
-
-/* .buttonChangeEnabled {
-    background-color: var(--ok-button-color);
-    color: var(--text-color);
+.buttonChange:disabled:hover {
+    background-color: var(--weak-password-indicator);
     transition: background-color .2s;
 }
 
-.buttonChangeEnabled:hover {
+.buttonChange:hover {
     background-color: var(--ok-button-hover-color);
-    color: var(--text-color);
     transition: background-color .2s;
-} */
+} 
 
 footer {
     position: fixed;
@@ -126,7 +118,13 @@ input{
     border: 0;
     border-radius: 5px;
     height: 40px;
+    margin: 10px 0;
     font-size: 20px;
+    box-shadow: var(--reverse-text-color) 5px 5px 12px
+}
+
+#formContainer > input[type=text] {
+    width: calc(100% - 32px);
 }
 
 ul.messages {
@@ -252,5 +250,8 @@ a {
     }
     p, .buttonChange {
         font-size: auto;
+    }
+    input {
+        margin: 2px 0;
     }
 }
