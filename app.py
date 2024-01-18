@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, session, jsonify
+from flask import Flask, render_template, request, flash, redirect
 from ldap3 import Server, Connection, SUBTREE, SIMPLE
 from ldap3 import SIMPLE, SUBTREE
 import json
@@ -36,6 +36,7 @@ def change_password(username, old_password, new_password):
                 if response == True:
                     return True
             else:
+                # session.clear()
                 return False
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -51,15 +52,19 @@ def index():
 
         if not username or not old_password or not new_password:
             flash('All fields are required!', 'error')
+            return redirect("/")
         elif new_password != repeat_password:
             flash('Both password feelds must be the same!', 'error')
+            return redirect("/")
         elif change_password(username, old_password, new_password):
             flash('Password changed successfully!', 'info')
+            return redirect("/")
         else:
-            flash('Incorrect username or password, contact your administrator for more info', 'error')
+            flash('Incorrect username or password, contact your administrator if you believe', 'error')
+            return redirect("/")
 
     return render_template('index.html')
-
+    
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port="7234")  #Do not use in production, only for debugging
 
