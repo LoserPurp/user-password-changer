@@ -1,45 +1,47 @@
 from flask import Flask, render_template, request, flash, redirect
 from ldap3 import Server, Connection, SUBTREE, SIMPLE
-from ldap3 import SIMPLE, SUBTREE
 import json
 from html import escape
 
 
 Author = "Robin Kleppe"
-Version = "2.3"
+Version = "2.4"
+
 
 #Loads config file
 with open('config.json', 'r') as file:
     config = json.load(file)
 
+
+
 app = Flask(__name__)
 app.secret_key = config["secretKey"]  # Replace with a secure and random secret key
 
+#Sanitizes user input
 def sanitize_input(input_string):
     return escape(input_string)
 
-def change_password(username, old_password, new_password):
 
+#Changes password
+def change_password(username, old_password, new_password):
     try:
-        #Specify your AD server details
+        #Specifies server
         server = Server(config["serverAdress"], use_ssl=True)
-        #Connect to the AD server
+
+        #Connects to the LDAP server
         with Connection(server, user=username + config["domain"], password=old_password, authentication=SIMPLE) as conn:
-            connect = conn.search(config["searchGroup"], f'(&(sAMAccountName={username}){config["searchUser"]})', SUBTREE)
-            print(f"connection status: {connect}")
+            conn.search(config["searchGroup"], f'(&(sAMAccountName={username})'+ str(config["searchUser"]), SUBTREE)
+
 
             if len(conn.entries) == 1:
                 user_dn = conn.entries[0].entry_dn
                 #Change user password
                 response = conn.extend.microsoft.modify_password(user_dn, new_password, old_password=None)
-                print(f"Change status: {response}")
                 if response == True:
                     return True
             else:
-                # session.clear()
                 return False
     except Exception as e:
-        print(f"An error occurred: {e}")
         return False
 
 @app.route('/', methods=['GET', 'POST'])
@@ -71,4 +73,3 @@ if __name__ == "__main__":
     # For use in production
     # from waitress import serve
     # serve(app, host="0.0.0.0", port=7234)
-
