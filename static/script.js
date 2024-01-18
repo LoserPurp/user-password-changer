@@ -54,9 +54,6 @@ function updateStrengthIndicator(strength) {
   strengthIndicator.classList.add(strength);
 }
 
-
-
-
 // Toggle password visability
 
 var isPasswordVisible = false;
@@ -76,12 +73,4 @@ function togglePassword(input) {
     showPasswordIcon.classList.remove('fa-eye-slash');
     showPasswordIcon.classList.add('fa-eye');
   }
-}
-
-function submitForm() {
-  var frm = document.getElementsByName('formContainer')[0];
-  frm.submit(); // Submit the form
-  frm.reset();  // Reset all form data
-  
-  return false; // Prevent page refresh
 }

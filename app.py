@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, flash, session
+from flask import Flask, render_template, request, flash, session, jsonify
 from ldap3 import Server, Connection, SUBTREE, SIMPLE
 from ldap3 import SIMPLE, SUBTREE
 import json
+from html import escape
+
 
 Author = "Robin Kleppe"
 Version = "2.3"
@@ -13,6 +15,9 @@ with open('config.json', 'r') as file:
 app = Flask(__name__)
 app.secret_key = config["secretKey"]  # Replace with a secure and random secret key
 
+def sanitize_input(input_string):
+    return escape(input_string)
+
 def change_password(username, old_password, new_password):
 
     try:
@@ -20,7 +25,7 @@ def change_password(username, old_password, new_password):
         server = Server(config["serverAdress"], use_ssl=True)
         #Connect to the AD server
         with Connection(server, user=username + config["domain"], password=old_password, authentication=SIMPLE) as conn:
-            connect = conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
+            connect = conn.search(config["searchGroup"], f'(&(sAMAccountName={username}){config["searchUser"]})', SUBTREE)
             print(f"connection status: {connect}")
 
             if len(conn.entries) == 1:
@@ -39,21 +44,19 @@ def change_password(username, old_password, new_password):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        username = request.form.get('username')
-        old_password = request.form.get('old_password')
-        new_password = request.form.get('new_password')
-        repeat_password = request.form.get('repeat_password')
+        username = sanitize_input(request.form.get('username'))
+        old_password = sanitize_input(request.form.get('old_password'))
+        new_password = sanitize_input(request.form.get('new_password'))
+        repeat_password = sanitize_input(request.form.get('repeat_password'))
 
         if not username or not old_password or not new_password:
             flash('All fields are required!', 'error')
         elif new_password != repeat_password:
-            flash('Both password feelds must be the same', 'error')
+            flash('Both password feelds must be the same!', 'error')
         elif change_password(username, old_password, new_password):
             flash('Password changed successfully!', 'info')
         else:
-            flash('Incorrect password or user is not available to change password. Contact the server admin if you believe this is an error!', 'error')
-
-    # session.clear()
+            flash('Incorrect username or password, contact your administrator for more info', 'error')
 
     return render_template('index.html')
 
@@ -63,3 +66,4 @@ if __name__ == "__main__":
     # For use in production
     # from waitress import serve
     # serve(app, host="0.0.0.0", port=7234)
+

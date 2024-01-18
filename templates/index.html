@@ -45,7 +45,7 @@
                     <span class="tooltiptext">Lorem Ipsum</span>
                   </div>
               </div>
-                <button class="buttonChange" id="submitButton" onclick="submitForm()" disabled>Change Password</button>
+                <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
         </form>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
