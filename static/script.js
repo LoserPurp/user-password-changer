@@ -1,10 +1,10 @@
-// Check password strength
-
 const newPasswordInput = document.getElementById('newPassword');
 const repeatPasswordInput = document.getElementById('repeatPassword');
 const submitButton = document.getElementById('submitButton');
 const passwordStrength = document.getElementById('passwordStrength');
 const strengthIndicator = document.getElementById('strengthIndicator');
+
+const allowedSymbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]\|:;"<>,.?/'
 
 newPasswordInput.addEventListener('input', checkPassword);
 repeatPasswordInput.addEventListener('input', checkPassword);
@@ -35,7 +35,10 @@ function calculatePasswordStrength(password) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-  if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 8) {
+  // if (!allowedSymbols.test(password)) {
+  //   return 'One or more symbol in password is not allowed!'
+  // }
+  if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
     return 'strong'; 
   }
   else if (hasUppercase && hasLowercase && hasNumber){
