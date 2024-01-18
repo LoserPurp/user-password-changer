@@ -4,14 +4,13 @@ const submitButton = document.getElementById('submitButton');
 const passwordStrength = document.getElementById('passwordStrength');
 const strengthIndicator = document.getElementById('strengthIndicator');
 
-const allowedSymbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]\|:;"<>,.?/'
-
 newPasswordInput.addEventListener('input', checkPassword);
 repeatPasswordInput.addEventListener('input', checkPassword);
 
+const newPassword = newPasswordInput.value;
+const repeatPassword = repeatPasswordInput.value;
+
 function checkPassword() {
-  const newPassword = newPasswordInput.value;
-  const repeatPassword = repeatPasswordInput.value;
 
   const strength = calculatePasswordStrength(newPassword);
 
@@ -35,9 +34,10 @@ function calculatePasswordStrength(password) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-  // if (!allowedSymbols.test(password)) {
-  //   return 'One or more symbol in password is not allowed!'
-  // }
+  if (newPassword != repeatPassword) {
+    // !!Make popup
+  }
+
   if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
     return 'strong'; 
   }
