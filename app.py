@@ -6,7 +6,7 @@ from html import escape
 
 
 Author = "Robin Kleppe"
-Version = "2.4"
+Version = "2.5"
 
 
 #Loads config file
