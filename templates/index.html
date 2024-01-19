@@ -41,28 +41,29 @@
             <div id="passwordStrength">
                 <div id="strengthIndicator"></div>
                 <div class="tooltip"><i class="fa-solid fa-circle-info"></i>
-                    <span class="tooltiptext">Password requirements: 6 Charaters or more, At least one big and small letter, At least one number and special symbol</span>
+                    <span class="tooltiptext">
+                        <p>Password requirements:</p>
+                            <p>6 Charaters or more</p>
+                            <p>At least one big and small letter</p>
+                            <p>At least one number and special symbol</p>
+                    </span>
                   </div>
               </div>
                 <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
         </form>
-        <div id="toast" style="opacity: 0;">
-            <div id="toastMessage">Lorem Ipsum. Error</div>
-        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <ul class="messages toast">
+                    <div class="{{ category }} toastMessage toastOffset">{{ message }}</div>
+                </ul>
+            {% endfor %}
+        {% endwith %}
     </div>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% for category, message in messages %}
-            <ul class="messages">
-                <div class="{{ category }}">{{ message }}</div>
-            </ul>
-        {% endfor %}
-    {% endwith %}
     <footer>
-        <a href="https://github.com/LoserPurp" target="_blank">Made by LoserPurp</a>
-        <a href="https://github.com/OlaYZen" target="_blank">Styling by OlaYZen</a>
-        <a href="https://github.com/LoserPurp/user-password-changer" target="_blank">Github</a>
+        <a href="https://github.com/LoserPurp" target="_blank"><p class="footerText">Made by LoserPurp</p></a>
+        <a href="https://github.com/OlaYZen" target="_blank"><p class="footerText">Styling by OlaYZen</p></a>
+        <a href="https://github.com/LoserPurp/user-password-changer" target="_blank"><p class="footerText">Github</p></a>
     </footer>
-
 </body>
 <script src="https://kit.fontawesome.com/47dbf3c43e.js" crossorigin="anonymous"></script>
 
