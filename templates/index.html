@@ -13,8 +13,8 @@
 </head>
 <body>
     <p class="title">Change Your Password</p>
-    <div class="formContainer">
-        <form id="formContainer" class="formComposer" autocomplete="off" method="post">
+    <div class="formContainer" id="formContainer">
+        <form id="formComposer" class="formComposer" autocomplete="off" method="post">
             <p><i class="fa-solid fa-user"></i> Username</p>
             <input type="text" name="username" required>
             <p><i class="fa-solid fa-lock"></i> Old Password</p>
@@ -46,6 +46,9 @@
               </div>
                 <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
         </form>
+        <div id="toast" style="opacity: 0;">
+            <div id="toastMessage">Lorem Ipsum. Error</div>
+        </div>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% for category, message in messages %}

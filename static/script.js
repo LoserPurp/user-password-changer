@@ -77,3 +77,42 @@ function togglePassword(input) {
     showPasswordIcon.classList.add('fa-eye');
   }
 }
+
+function toast(message, reason){
+
+// Fill in with relevant information
+// Or change if needed
+  if(!message){
+    message = "Lorem Ipsum"
+    if(!reason){
+
+    }
+
+  }
+
+
+  var toastContainer = document.createElement('div');
+  toastContainer.id = 'toast';
+  
+  var toastMessage = document.createElement('div');
+  toastMessage.id = 'toastMessage';
+  toastMessage.textContent = message;
+  
+  toastContainer.appendChild(toastMessage);
+  
+  var formContainer = document.getElementById('formContainer');
+  formContainer.appendChild(toastContainer);
+  
+
+
+  toastContainer.style.opacity = 1;
+  
+  setTimeout(function() {
+    toastContainer.style.opacity = 0;
+  
+    setTimeout(function() {
+      formContainer.removeChild(toastContainer);
+    }, 2000);
+  }, 3000);
+  
+}

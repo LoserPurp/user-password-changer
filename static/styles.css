@@ -80,6 +80,25 @@ p, .buttonChange {
     padding: 50px 0 0 0;
 }
 
+#toast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+#toastMessage {
+    background: var(--tertiary-color);
+    min-width: 180px;
+    padding: 0 15px;
+    text-align: center;
+    position: absolute;
+    font-size: 22px;
+    border-radius: 50px;
+}
+
+
 .buttonChange {
     background-color: var(--ok-button-color);
     height: 40px;
@@ -123,7 +142,7 @@ input{
     box-shadow: var(--reverse-text-color) 5px 5px 12px
 }
 
-#formContainer > input[type=text] {
+#formComposer > input[type=text] {
     width: calc(100% - 32px);
 }
 
