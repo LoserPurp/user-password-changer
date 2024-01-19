@@ -7,11 +7,11 @@ const strengthIndicator = document.getElementById('strengthIndicator');
 newPasswordInput.addEventListener('input', checkPassword);
 repeatPasswordInput.addEventListener('input', checkPassword);
 
-const newPassword = newPasswordInput.value;
-const repeatPassword = repeatPasswordInput.value;
 
 function checkPassword() {
-
+  const newPassword = newPasswordInput.value;
+  const repeatPassword = repeatPasswordInput.value;
+  
   const strength = calculatePasswordStrength(newPassword);
 
   updateStrengthIndicator(strength);
@@ -29,22 +29,31 @@ function checkPassword() {
 
 function calculatePasswordStrength(password) {
 
+  const newPassword = newPasswordInput.value;
+  const repeatPassword = repeatPasswordInput.value;
+
   const hasUppercase = /[A-Z]/.test(password);
   const hasLowercase = /[a-z]/.test(password);
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
+  
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
-    // !!Make popup
+    toast('Both password feelds must match!')
+  }
+  else if ((newPassword && repeatPassword) && newPassword == repeatPassword) {
+      toastContainer = document.getElementById("toast")
+      toastContainer.remove()
   }
 
+  
   if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
     return 'strong'; 
   }
-  else if (hasUppercase && hasLowercase && hasNumber){
+  else if (hasUppercase && hasLowercase && hasNumber) {
     return 'high';
   } 
-  else if (hasUppercase && hasLowercase){
+  else if (hasUppercase && hasLowercase) {
     return 'medium';
   }
   else {
@@ -78,41 +87,30 @@ function togglePassword(input) {
   }
 }
 
-function toast(message, reason){
+function toast(message) {
+
+//Removes existing toast if found
+try {
+  toastContainer = document.getElementById("toast")
+  toastContainer.remove()
+} catch (error) {}
 
 // Fill in with relevant information
 // Or change if needed
   if(!message){
-    message = "Lorem Ipsum"
-    if(!reason){
-
-    }
-
+    message = "NULL"
   }
 
-
   var toastContainer = document.createElement('div');
+  toastContainer.className = 'toast';
   toastContainer.id = 'toast';
   
   var toastMessage = document.createElement('div');
-  toastMessage.id = 'toastMessage';
+  toastMessage.className = 'toastMessage';
   toastMessage.textContent = message;
   
   toastContainer.appendChild(toastMessage);
   
   var formContainer = document.getElementById('formContainer');
   formContainer.appendChild(toastContainer);
-  
-
-
-  toastContainer.style.opacity = 1;
-  
-  setTimeout(function() {
-    toastContainer.style.opacity = 0;
-  
-    setTimeout(function() {
-      formContainer.removeChild(toastContainer);
-    }, 2000);
-  }, 3000);
-  
 }
