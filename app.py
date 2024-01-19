@@ -31,13 +31,16 @@ def change_password(username, old_password, new_password):
 
         #Connects to the LDAP server
         with Connection(server, user=username + config["domain"], password=old_password, authentication=SIMPLE) as conn:
-            conn.search(config["searchGroup"], f'(&(sAMAccountName={username})'+ str(config["searchUser"]), SUBTREE)
-
+            print("Correct username and password")
+            connect = conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
+            # connect = conn.search(config["searchGroup"], f'(&(sAMAccountName={username}){config["searchUser"]})', SUBTREE)
+            print(f"connection status: {connect}")
 
             if len(conn.entries) == 1:
                 user_dn = conn.entries[0].entry_dn
                 #Change user password
                 response = conn.extend.microsoft.modify_password(user_dn, new_password, old_password=None)
+                print(f'change: {response}')
                 if response == True:
                     return True
             else:
