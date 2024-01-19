@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect
 from ldap3 import Server, Connection, SUBTREE, SIMPLE
+from waitress import serve
 import json
 from html import escape
 
@@ -15,7 +16,7 @@ with open('config.json', 'r') as file:
 
 
 app = Flask(__name__)
-app.secret_key = config["secretKey"]  # Replace with a secure and random secret key
+app.secret_key = config["secretKey"]
 
 #Sanitizes user input
 def sanitize_input(input_string):
@@ -47,20 +48,25 @@ def change_password(username, old_password, new_password):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
+        #Gets santized input from user
         username = sanitize_input(request.form.get('username'))
         old_password = sanitize_input(request.form.get('old_password'))
         new_password = sanitize_input(request.form.get('new_password'))
         repeat_password = sanitize_input(request.form.get('repeat_password'))
 
-        if not username or not old_password or not new_password:
+        #Checks if all feelds are filled inn
+        if not username or not old_password or not new_password or not repeat_password:
             flash('All fields are required!', 'error')
             return redirect("/")
+        #Checks if passwords match
         elif new_password != repeat_password:
             flash('Both password feelds must be the same!', 'error')
             return redirect("/")
+        #Tries to change password
         elif change_password(username, old_password, new_password):
             flash('Password changed successfully!', 'info')
             return redirect("/")
+        #If everything fails, return generic error message
         else:
             flash('Incorrect username or password, contact your administrator if you believe', 'error')
             return redirect("/")
@@ -71,5 +77,4 @@ if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port="7234")  #Do not use in production, only for debugging
 
     # For use in production
-    # from waitress import serve
     # serve(app, host="0.0.0.0", port=7234)

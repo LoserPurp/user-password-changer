@@ -34,7 +34,7 @@ function calculatePasswordStrength(password) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-  if (newPassword != repeatPassword) {
+  if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
     // !!Make popup
   }
 
