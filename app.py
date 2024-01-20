@@ -33,7 +33,6 @@ def change_password(username, old_password, new_password):
         with Connection(server, user=username + config["domain"], password=old_password, authentication=SIMPLE) as conn:
             print("Correct username and password")
             connect = conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
-            # connect = conn.search(config["searchGroup"], f'(&(sAMAccountName={username}){config["searchUser"]})', SUBTREE)
             print(f"connection status: {connect}")
 
             if len(conn.entries) == 1:

@@ -11,7 +11,7 @@ repeatPasswordInput.addEventListener('input', checkPassword);
 function checkPassword() {
   const newPassword = newPasswordInput.value;
   const repeatPassword = repeatPasswordInput.value;
-  
+
   const strength = calculatePasswordStrength(newPassword);
 
   updateStrengthIndicator(strength);
@@ -37,7 +37,7 @@ function calculatePasswordStrength(password) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-  
+
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
     toast('Both password feelds must match!')
   }
@@ -46,7 +46,7 @@ function calculatePasswordStrength(password) {
       toastContainer.remove()
   }
 
-  
+
   if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
     return 'strong'; 
   }
@@ -73,7 +73,7 @@ var isPasswordVisible = false;
 function togglePassword(input) {
   var passwordInput = document.getElementById(input);
   var showPasswordIcon = document.getElementById(input + 'showPassword');
-  
+
   isPasswordVisible = !isPasswordVisible;
 
   if (isPasswordVisible) {
@@ -104,13 +104,13 @@ try {
   var toastContainer = document.createElement('div');
   toastContainer.className = 'toast';
   toastContainer.id = 'toast';
-  
+
   var toastMessage = document.createElement('div');
   toastMessage.className = 'toastMessage';
   toastMessage.textContent = message;
-  
+
   toastContainer.appendChild(toastMessage);
-  
+
   var formContainer = document.getElementById('formContainer');
   formContainer.appendChild(toastContainer);
 }
