@@ -56,13 +56,13 @@ def index():
         new_password = sanitize_input(request.form.get('new_password'))
         repeat_password = sanitize_input(request.form.get('repeat_password'))
 
-        #Checks if all feelds are filled inn
+        #Checks if all fields are filled inn
         if not username or not old_password or not new_password or not repeat_password:
             flash('All fields are required!', 'error')
             return redirect("/")
         #Checks if passwords match
         elif new_password != repeat_password:
-            flash('Both password feelds must be the same!', 'error')
+            flash('Both password fields must be the same!', 'error')
             return redirect("/")
         #Tries to change password
         elif change_password(username, old_password, new_password):
