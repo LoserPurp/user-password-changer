@@ -31,8 +31,8 @@ function updatePlaceHolder(input, placeholder) {
 
 
 
-
-
+// Runs on page load 
+checkPassword()
 function checkPassword() {
   const newPassword = newPasswordInput.value;
   const repeatPassword = repeatPasswordInput.value;
@@ -71,11 +71,14 @@ function calculatePasswordStrength(password) {
   SixChar = document.getElementById("6Char")
   caseChar = document.getElementById("caseChar")
   spesChar = document.getElementById("spesChar")
+  stronkChar = document.getElementById("stronkChar")
 
   SixChar.classList.toggle("checked-li", password.length >= 6);
   caseChar.classList.toggle("checked-li", hasUppercase && hasLowercase);
   spesChar.classList.toggle("checked-li", hasSpecialChar || hasNumber);
-  
+  stronkChar.classList.toggle("checked-li", hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber);
+  strengthLabel = document.querySelector("#StrenghtLabel")
+
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
     toast('Both password feelds must match!')
   }
@@ -85,15 +88,19 @@ function calculatePasswordStrength(password) {
   }
 
   if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
+    strengthLabel.innerHTML = "Excellent"
     return 'strong'; 
   }
   else if (hasUppercase && hasLowercase && hasNumber) {
+    strengthLabel.innerHTML = "Excellent"
     return 'high';
   } 
   else if (hasUppercase && hasLowercase) {
+    strengthLabel.innerHTML = "Moderate"
     return 'medium';
   }
   else {
+    strengthLabel.innerHTML = "Weak"
     return 'weak';
   }
 }
