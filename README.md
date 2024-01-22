@@ -1,8 +1,11 @@
 # user-password-changer
 A simple web server built on the ldap3 python library that allows users to change their password
 
-<p align="center"><img src="/img/image-black.png" width="550"/></p>
-<p align="center"><img src="/img/image-white.png" width="550"/></p>
+<p align="center">
+  <img src="/img/image-black.png" width="500"/>
+  <img src="/img/image-white.png" width="500"/>
+</p>
+
 
 # About
 Do not expect any updates to this project after version 3.0.
