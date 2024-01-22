@@ -96,7 +96,7 @@ function calculatePasswordStrength(password) {
   SixChar.classList.toggle("checked-li", password.length >= 6);
   caseChar.classList.toggle("checked-li", hasUppercase && hasLowercase);
   spesChar.classList.toggle("checked-li", hasSpecialChar || hasNumber);
-  stronkChar.classList.toggle("checked-li", hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber);
+  stronkChar.classList.toggle("checked-li",  hasUppercase && hasLowercase && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6);
   strengthLabel = document.querySelector("#StrenghtLabel")
 
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
