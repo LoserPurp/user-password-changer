@@ -1,6 +1,6 @@
 :root{
 /* White mode */
-    --primary-color: #c8c6c3;
+/*     --primary-color: #c8c6c3;
     --secondary-color: #ffffff;
     --tertiary-color: #fafafa;
     --quaternary-color: #a3a0a1;;
@@ -25,11 +25,11 @@
     --weak-password-indicator: #f73f36;
     --medium-password-indicator: #d39a0b;
     --high-password-indicator: #24ce53;
-    --strong-password-indicator: #24ce53;
+    --strong-password-indicator: #24ce53; */
 
 
     /* Dark Mode (Default) */
-    /* --primary-color: #111111;
+    --primary-color: #111111;
     --secondary-color: #2c292a;
     --tertiary-color: #242122;
     --quaternary-color: #a3a0a1;;
@@ -54,7 +54,7 @@
     --weak-password-indicator: #f73f36;
     --medium-password-indicator: #d39a0b;
     --high-password-indicator: #24ce53;
-    --strong-password-indicator: #24ce53; */
+    --strong-password-indicator: #24ce53;
 
 }
 
