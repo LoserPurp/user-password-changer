@@ -24,7 +24,6 @@
 
     --weak-password-indicator: #f73f36;
     --medium-password-indicator: #d39a0b;
-    --high-password-indicator: #24ce53;
     --strong-password-indicator: #24ce53; */
 
 
@@ -53,7 +52,6 @@
 
     --weak-password-indicator: #f73f36;
     --medium-password-indicator: #d39a0b;
-    --high-password-indicator: #24ce53;
     --strong-password-indicator: #24ce53;
 
 }
@@ -318,10 +316,6 @@ li.checked-li{
 .medium {
     width: 50px !important;
     background-color: var(--medium-password-indicator) !important;
-}
-.high {
-    width: 100px !important;
-    background-color: var(--high-password-indicator) !important;
 }
 .strong {
     width: 100px !important;

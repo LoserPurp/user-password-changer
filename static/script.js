@@ -64,7 +64,7 @@ function checkPassword() {
 
 
 
-  if ((strength == 'strong' || strength == 'high') && newPassword == repeatPassword)  {
+  if ((strength == 'strong') && newPassword == repeatPassword)  {
     submitButton.removeAttribute('disabled');
     submitButton.classList.add('buttonChangeEnabled');
     return true;
@@ -96,7 +96,7 @@ function calculatePasswordStrength(password) {
   SixChar.classList.toggle("checked-li", password.length >= 6);
   caseChar.classList.toggle("checked-li", hasUppercase && hasLowercase);
   spesChar.classList.toggle("checked-li", hasSpecialChar || hasNumber);
-  stronkChar.classList.toggle("checked-li",  hasUppercase && hasLowercase && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6);
+  stronkChar.classList.toggle("checked-li", hasUppercase && hasLowercase && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6);
   strengthLabel = document.querySelector("#StrenghtLabel")
 
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
@@ -107,14 +107,10 @@ function calculatePasswordStrength(password) {
       toastContainer.remove()
   }
 
-  if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
+  if (hasUppercase && hasLowercase && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
     strengthLabel.innerHTML = "Excellent"
     return 'strong'; 
   }
-  else if (hasUppercase && hasLowercase && hasNumber) {
-    strengthLabel.innerHTML = "Excellent"
-    return 'high';
-  } 
   else if (hasUppercase && hasLowercase) {
     strengthLabel.innerHTML = "Moderate"
     return 'medium';
