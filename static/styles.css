@@ -1,30 +1,23 @@
 :root{
-    /* Old color scheme */
+/* White mode */
+    --primary-color: #c8c6c3;
+    --secondary-color: #ffffff;
+    --tertiary-color: #fafafa;
+    --quaternary-color: #a3a0a1;;
 
-    /* --primary-color: #292c2e;
-    --secondary-color: #292c2e;
-    --tertiary-color: #494949;
 
-    --text-color: #d2e4c5;
-    --reverse-text-color: black;
+    --toast-message: #e5e5e5;
+    --placeholder-color: #686566;
+    --input-border: #d8d8d8;
+    --hide-show-color: #000000;
+    --password-strength-color: #e2e2e2;
+    --password-strength-Indicator: #bdbdbd;
 
-    --ok-button-color: #603F8B;
-    --ok-button-hover-color: #3d245f;
 
-    --weak-password-indicator: #e74c3c;
-    --medium-password-indicator: #fd7340;
-    --high-password-indicator: #f39c12;
-    --strong-password-indicator: #2ecc71; */
-
-    
-    /* New color scheme. Modified from https://stats.purplexity.no/ */
-
-    --primary-color: #111111;
-    --secondary-color: #2c292a;
-    --tertiary-color: #242122;
-
-    --text-color: white;
-    --reverse-text-color: black;
+    --text-color: black;
+    --reverse-text-color: white;
+    --White: white;
+    --Black: rgb(36, 36, 36);
     
     --ok-button-color: #6928c6;
     --ok-button-hover-color: #9bbb58;
@@ -33,6 +26,35 @@
     --medium-password-indicator: #d39a0b;
     --high-password-indicator: #24ce53;
     --strong-password-indicator: #24ce53;
+
+
+    /* Dark Mode (Default) */
+    /* --primary-color: #111111;
+    --secondary-color: #2c292a;
+    --tertiary-color: #242122;
+    --quaternary-color: #a3a0a1;;
+
+
+    --toast-message: #252525;
+    --placeholder-color: #686566;
+    --input-border: #403d3e;
+    --hide-show-color: #c5c5c5;
+    --password-strength-color: #e2e2e2;
+    --password-strength-Indicator: var(var(--secondary-color));
+
+
+    --text-color: white;
+    --reverse-text-color: black;
+    --White: white;
+    --Black: black;
+
+    --ok-button-color: #6928c6;
+    --ok-button-hover-color: #9bbb58;
+
+    --weak-password-indicator: #f73f36;
+    --medium-password-indicator: #d39a0b;
+    --high-password-indicator: #24ce53;
+    --strong-password-indicator: #24ce53; */
 
 }
 
@@ -61,7 +83,7 @@ p, .buttonChange {
 
 .formComposer {
     /* box-shadow: black 0px 0px 15px; */
-    box-shadow: var(--reverse-text-color) 0px 0px 54px;
+    box-shadow: var(--Black) 0px 0px 54px;
     background: var(--secondary-color);
     display: grid;
     width: 540px;
@@ -87,7 +109,7 @@ p, .buttonChange {
 }
 
 .toastMessage {
-    background: #252525;
+    background: var(--toast-message);
     min-width: 180px;
     padding: 0 15px;
     text-align: center;
@@ -100,7 +122,7 @@ p, .buttonChange {
 .buttonChange {
     background-color: var(--ok-button-color);
     height: 40px;
-    color: var(--text-color);
+    color: var(--White);
     border: 0;
     border-radius: 10px;
     transition: background-color .2s;
@@ -122,7 +144,7 @@ footer {
     background: var(--secondary-color);
     width: 100%;
     /* padding-left: 10px; */
-    box-shadow: var(--reverse-text-color) 0px 0px 15px;
+    box-shadow: var(--Black) 0px 0px 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -132,7 +154,7 @@ footer {
 input {
     color: var(--text-color);
     background: var(--tertiary-color);
-    border: 1px solid #403d3e;
+    border: 1px solid var(--input-border);
     border-radius: 5px;
     max-height: 40px;
     padding: 16.2px 0 2px 10px;
@@ -141,7 +163,7 @@ input {
 }
 
 .placeholder{
-    color: #686566;
+    color: var(--placeholder-color);
     transition: margin-top .2s;
     transition: font-size .2s;
     user-select: none;
@@ -166,7 +188,7 @@ p#oldPasswordplaceholder.placeholderWithText, p#newPasswordplaceholder.placehold
     text-decoration: underline;
     user-select: none;
     font-size: 15px;
-    color: #c5c5c5;
+    color: var(--hide-show-color);
 }
 
 .hideShowUnder {
@@ -230,14 +252,14 @@ ul.messages {
 }
 
 #passwordStrength {
-    color: #a3a0a1;
+    color: var(--quaternary-color);
     display: flex;
     flex-direction: column;
     font-size: 12px;
 }
 
 .passwordSpecs {
-    color: #e2e2e2;
+    color: var(--password-strength-color);
     font-size: 14px;
     margin: 0;
     padding: 0;
@@ -245,7 +267,7 @@ ul.messages {
 }
 
 li {
-    color: #a3a0a1;
+    color: var(--quaternary-color);
     list-style-type: circle;
 }
 
@@ -258,7 +280,7 @@ li.checked-li{
     height: 4px;
     margin-left: 6px;
     margin-right: 6px;
-    background: #a3a0a1;
+    background: var(--quaternary-color);
     align-self: center;
     border-radius: 100%;
 }
@@ -281,7 +303,8 @@ li.checked-li{
 
 .passwordStrengthIndicator {
     height: 10px;
-    background-color: #242122;
+    border: 1px solid var(--password-strength-Indicator);
+    background-color: var(--tertiary-color);
     border-radius: 25px;
     transition: background-color .4s;
     width: 100px;
@@ -328,48 +351,6 @@ a {
 .error {
     color: var(--weak-password-indicator);
 }
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    /* border-bottom: 1px dotted black; */
-    right: 6px;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    /* text-align: center; */
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -85px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 15px;
-  }
-  
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #fff transparent transparent transparent;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    border: 1px white solid;
-    visibility: visible;
-    opacity: 1;
-  }
 
 .footerText{
     display: inline-block;

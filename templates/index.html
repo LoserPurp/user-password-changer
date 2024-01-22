@@ -6,7 +6,6 @@
     <title>Change Your Password</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="../static/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -64,9 +63,9 @@
                         <p id="StrenghtLabel">Weak</p>
                     </div>
                     <ul class="passwordSpecs">
-                        <li style="list-style: none;color: #e2e2e2;">Must consist of
+                        <li style="list-style: none;color: var(--text-color);">Must consist of
                             <ul style="padding: 0 0 0 16px;">
-                                <li id="6Char">Six characters</li>
+                                <li id="6Char">Minimum six characters</li>
                                 <li id="caseChar">At least one lowercase letter and one uppercase letter</li>
                                 <li id="spesChar">At least one special character or one number</li>
                                 <li id="stronkChar">Excellent password strength</li>
@@ -94,5 +93,4 @@
 </body>
 <script src="https://kit.fontawesome.com/47dbf3c43e.js" crossorigin="anonymous"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
-<script src="../static/script.js"></script>
 </html>

@@ -15,7 +15,7 @@ function updatePlaceHolder(input) {
   var placeholderParagraph = document.getElementById(input+'placeholder');
   var hideshow = document.querySelector("#hideShow"+input)
 
-
+try {
   hideshow.classList.add('hideShowFucused');
   placeholderParagraph.classList.add('placeholderWithText');
 
@@ -31,6 +31,21 @@ function updatePlaceHolder(input) {
       }
  
     });
+
+  } catch (error) {
+  placeholderParagraph.classList.add('placeholderWithText');
+
+  document.getElementById(input).addEventListener('blur', function() {
+      placeholderParagraph.classList.remove('placeholderWithText');
+      if (usernameInput.value !== "") {
+        placeholderParagraph.classList.add('placeholderWithText');
+      } else {
+        placeholderParagraph.classList.remove('placeholderWithText');
+      }
+ 
+    });
+
+  }
 }
 
 
