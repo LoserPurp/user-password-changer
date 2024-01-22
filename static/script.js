@@ -8,6 +8,31 @@ newPasswordInput.addEventListener('input', checkPassword);
 repeatPasswordInput.addEventListener('input', checkPassword);
 
 
+
+function updatePlaceHolder(input, placeholder) {
+
+  var usernameInput = document.getElementById(input);
+  var placeholderParagraph = document.getElementById(placeholder);
+  
+  placeholderParagraph.classList.add('placeholderWithText');
+
+  document.getElementById(input).addEventListener('blur', function() {
+      placeholderParagraph.classList.remove('placeholderWithText');
+ 
+      if (usernameInput.value !== "") {
+        placeholderParagraph.classList.add('placeholderWithText');
+      } else {
+        placeholderParagraph.classList.remove('placeholderWithText');
+      }
+ 
+    });
+}
+
+
+
+
+
+
 function checkPassword() {
   const newPassword = newPasswordInput.value;
   const repeatPassword = repeatPasswordInput.value;
@@ -15,6 +40,9 @@ function checkPassword() {
   const strength = calculatePasswordStrength(newPassword);
 
   updateStrengthIndicator(strength);
+
+
+
 
   if ((strength == 'strong' || strength == 'high') && newPassword == repeatPassword)  {
     submitButton.removeAttribute('disabled');
@@ -25,6 +53,9 @@ function checkPassword() {
     submitButton.classList.remove('buttonChangeEnabled');
     return false;
   }
+
+
+  
 }
 
 function calculatePasswordStrength(password) {
@@ -37,7 +68,14 @@ function calculatePasswordStrength(password) {
   const hasNumber = /\d/.test(password);
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
+  SixChar = document.getElementById("6Char")
+  caseChar = document.getElementById("caseChar")
+  spesChar = document.getElementById("spesChar")
 
+  SixChar.classList.toggle("checked-li", password.length >= 6);
+  caseChar.classList.toggle("checked-li", hasUppercase && hasLowercase);
+  spesChar.classList.toggle("checked-li", hasSpecialChar || hasNumber);
+  
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
     toast('Both password feelds must match!')
   }
@@ -45,7 +83,6 @@ function calculatePasswordStrength(password) {
       toastContainer = document.getElementById("toast")
       toastContainer.remove()
   }
-
 
   if (hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
     return 'strong'; 
@@ -71,19 +108,19 @@ function updateStrengthIndicator(strength) {
 var isPasswordVisible = false;
 
 function togglePassword(input) {
+  var hideshow = document.querySelector("#hideShow"+input)
   var passwordInput = document.getElementById(input);
-  var showPasswordIcon = document.getElementById(input + 'showPassword');
 
   isPasswordVisible = !isPasswordVisible;
 
   if (isPasswordVisible) {
     passwordInput.type = 'text';
-    showPasswordIcon.classList.remove('fa-eye');
-    showPasswordIcon.classList.add('fa-eye-slash');
+    hideshow.innerHTML = "Hide"
+    hideshow.classList.add('hideShowUnder')
   } else {
     passwordInput.type = 'password';
-    showPasswordIcon.classList.remove('fa-eye-slash');
-    showPasswordIcon.classList.add('fa-eye');
+    hideshow.innerHTML = "Show"
+    hideshow.classList.remove('hideShowUnder')
   }
 }
 
@@ -114,3 +151,54 @@ try {
   var formContainer = document.getElementById('formContainer');
   formContainer.appendChild(toastContainer);
 }
+
+// Adjusts label width to match input width for mobile devices
+window.addEventListener('DOMContentLoaded', (event) => {
+  const setLabelContainerWidth = (inputId) => {
+      const inputElement = document.querySelector(`#${inputId}`);
+      const labelContainer = inputElement.nextElementSibling;
+
+      const widthWithDecimals = Math.ceil(inputElement.getBoundingClientRect().width * 100) / 100;
+
+      const adjustedWidth = widthWithDecimals - 20;
+
+      labelContainer.style.setProperty('width', `${adjustedWidth}px`, 'important');
+  };
+
+  const resetLabelContainerWidth = (inputId) => {
+      const labelContainer = document.querySelector(`#${inputId}`).nextElementSibling;
+      labelContainer.style.removeProperty('width');
+  };
+  const checkAndSetWidthForInputs = () => {
+      const inputIds = ["username", "oldPassword", "newPassword", "repeatPassword"];
+
+      inputIds.forEach((inputId) => {
+          if (window.innerWidth < 650) {
+              setLabelContainerWidth(inputId);
+          } else {
+              resetLabelContainerWidth(inputId);
+          }
+      });
+  };
+  checkAndSetWidthForInputs();
+
+  window.addEventListener('resize', () => {
+      checkAndSetWidthForInputs();
+  });
+});
+
+// Adjusts spacing for password input on mobile devices
+function updateClassBasedOnWidth() {
+  var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  var targetElement = document.querySelector("#formComposer > div.passwordContainer > div:nth-child(1)"); 
+  if (windowWidth < 650) {
+    targetElement.classList.add("inputContainerSpacing");
+  } else {
+    targetElement.classList.remove("inputContainerSpacing");
+  }
+}
+
+// Runs on page load
+updateClassBasedOnWidth();
+// Runs on every window resize
+window.addEventListener("resize", updateClassBasedOnWidth);

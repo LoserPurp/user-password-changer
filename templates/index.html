@@ -9,44 +9,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p class="title">Change Your Password</p>
     <div class="formContainer" id="formContainer">
         <form id="formComposer" class="formComposer" autocomplete="off" method="post">
-            <p><i class="fa-solid fa-user"></i> Username</p>
-            <input type="text" name="username" required>
-            <p><i class="fa-solid fa-lock"></i> Old Password</p>
+            <p class="title">Change Your Password</p>
             
-            <div class="passwordOldPassword">
-                <input type="password" id="oldPassword" name="old_password" required>
-                <i id="oldPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('oldPassword')"></i>
+            <div class="inputContainer inputContainerSpacing">
+                <input type="text" id="username" name="username" required onfocus="updatePlaceHolder('username', 'usernameplaceholder')">
+                <div class="labelContainer">
+                    <p id="usernameplaceholder" class="placeholder">Username</p>
+                </div>
+            </div>
+
+
+            <div class="inputContainer inputContainerSpacing">
+                <input type="password" id="oldPassword" name="old_password" required onfocus="updatePlaceHolder('oldPassword', 'oldpasswordplaceholder')">
+                <div class="labelContainer">
+                    <p id="oldpasswordplaceholder" class="placeholder">Old Password</p>
+                    <p id="hideShowoldPassword"class="hideShow"  onmousedown="togglePassword('oldPassword')">Show</p>
+                </div>
             </div>
 
             <div class="passwordContainer"> 
 
-                <div class="passwordNewPassword">
-                    <p><i class="fa-solid fa-key"></i> New Password</p>
-                    <input type="password" id="newPassword" name="new_password" required>
-                    <i id="newPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('newPassword')"></i>
+                
+            <div class="inputContainer">
+                <input type="password" id="newPassword" name="new_password" required onfocus="updatePlaceHolder('newPassword', 'newPasswordplaceholder')">
+                <div class="labelContainer">
+                    <p id="newPasswordplaceholder" class="placeholder">New Password</p>
+                    <p id="hideShownewPassword" class="hideShow" onmousedown="togglePassword('newPassword')">Show</p>
                 </div>
+               
+            </div>
 
-                <div class="passwordRetypePassword">
-                    <p><i class="fa-solid fa-unlock"></i> Retype Password</p>
-                    <input type="password" id="repeatPassword" name="repeat_password" required>
-                    <i id="repeatPasswordshowPassword" class="fas fa-eye" onmousedown="togglePassword('repeatPassword')"></i>
+                            
+            <div class="inputContainer">
+                <input type="password" id="repeatPassword" name="repeat_password" required onfocus="updatePlaceHolder('repeatPassword', 'repeatPasswordplaceholder')">
+                <div class="labelContainer">
+                    <p id="repeatPasswordplaceholder" class="placeholder">Repeat Password</p>
+                    <p id="hideShowrepeatPassword" class="hideShow" onmousedown="togglePassword('repeatPassword')">Show</p>
                 </div>
             </div>
-            <div id="passwordStrength">
-                <div id="strengthIndicator"></div>
-                <div class="tooltip"><i class="fa-solid fa-circle-info"></i>
-                    <span class="tooltiptext">
-                        <p>Password requirements:</p>
-                            <p>6 Charaters or more</p>
-                            <p>At least one big and small letter</p>
-                            <p>At least one number and special symbol</p>
-                    </span>
+
+            </div>
+
+              <div id="passwordStrength">
+                    <div class="passwordStrengthAndLabel">
+                        <p>Password Strenght</p>
+                        <div class="bulletPoint"></div>
+                        <div class="passwordStrengthIndicator">
+                            <div id="strengthIndicator"></div>
+                        </div>
+                    </div>
+                    <ul class="passwordSpecs">
+                        <li style="list-style: none;color: #e2e2e2;">Must contain at least
+                            <ul style="padding: 0 0 0 16px;">
+                                <li id="6Char">Six characters</li>
+                                <li id="caseChar">One lower case character and one uppercase character</li>
+                                <li id="spesChar">One special character or one number character</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+
                   </div>
-              </div>
-                <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
+            <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
         </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% for category, message in messages %}
