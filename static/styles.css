@@ -144,6 +144,7 @@ input {
     color: #686566;
     transition: margin-top .2s;
     transition: font-size .2s;
+    user-select: none;
 }
 
 .placeholderWithText {
@@ -154,7 +155,7 @@ input {
     transition: font-size .2s;
 }
 
-p#oldpasswordplaceholder.placeholderWithText, p#newPasswordplaceholder.placeholderWithText, p#repeatPasswordplaceholder.placeholderWithText{
+p#oldPasswordplaceholder.placeholderWithText, p#newPasswordplaceholder.placeholderWithText, p#repeatPasswordplaceholder.placeholderWithText{
     bottom: 11px;
     position: relative;
 }
@@ -163,10 +164,18 @@ p#oldpasswordplaceholder.placeholderWithText, p#newPasswordplaceholder.placehold
     pointer-events: all;
     cursor: pointer;
     text-decoration: underline;
+    user-select: none;
+    font-size: 15px;
+    color: #c5c5c5;
 }
 
 .hideShowUnder {
     text-decoration: none;
+}
+
+.hideShowFucused {
+    top: 2px;
+    position: relative;
 }
 
 .labelContainer {

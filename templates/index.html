@@ -6,6 +6,7 @@
     <title>Change Your Password</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="../static/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +15,7 @@
             <p class="title">Change Your Password</p>
             
             <div class="inputContainer inputContainerSpacing">
-                <input type="text" id="username" name="username" required onfocus="updatePlaceHolder('username', 'usernameplaceholder')">
+                <input type="text" id="username" name="username" required onfocus="updatePlaceHolder('username')">
                 <div class="labelContainer">
                     <p id="usernameplaceholder" class="placeholder">Username</p>
                 </div>
@@ -22,9 +23,9 @@
 
 
             <div class="inputContainer inputContainerSpacing">
-                <input type="password" id="oldPassword" name="old_password" required onfocus="updatePlaceHolder('oldPassword', 'oldpasswordplaceholder')">
+                <input type="password" id="oldPassword" name="old_password" required onfocus="updatePlaceHolder('oldPassword')">
                 <div class="labelContainer">
-                    <p id="oldpasswordplaceholder" class="placeholder">Old Password</p>
+                    <p id="oldPasswordplaceholder" class="placeholder">Old Password</p>
                     <p id="hideShowoldPassword"class="hideShow"  onmousedown="togglePassword('oldPassword')">Show</p>
                 </div>
             </div>
@@ -33,7 +34,7 @@
 
                 
             <div class="inputContainer">
-                <input type="password" id="newPassword" name="new_password" required onfocus="updatePlaceHolder('newPassword', 'newPasswordplaceholder')">
+                <input type="password" id="newPassword" name="new_password" required onfocus="updatePlaceHolder('newPassword')">
                 <div class="labelContainer">
                     <p id="newPasswordplaceholder" class="placeholder">New Password</p>
                     <p id="hideShownewPassword" class="hideShow" onmousedown="togglePassword('newPassword')">Show</p>
@@ -43,7 +44,7 @@
 
                             
             <div class="inputContainer">
-                <input type="password" id="repeatPassword" name="repeat_password" required onfocus="updatePlaceHolder('repeatPassword', 'repeatPasswordplaceholder')">
+                <input type="password" id="repeatPassword" name="repeat_password" required onfocus="updatePlaceHolder('repeatPassword')">
                 <div class="labelContainer">
                     <p id="repeatPasswordplaceholder" class="placeholder">Repeat Password</p>
                     <p id="hideShowrepeatPassword" class="hideShow" onmousedown="togglePassword('repeatPassword')">Show</p>
@@ -66,9 +67,9 @@
                         <li style="list-style: none;color: #e2e2e2;">Must consist of
                             <ul style="padding: 0 0 0 16px;">
                                 <li id="6Char">Six characters</li>
-                                <li id="caseChar">One lower case character and one uppercase character</li>
-                                <li id="spesChar">One special character or one number character</li>
-                                <li id="stronkChar">Excellent password strenght</li>
+                                <li id="caseChar">At least one lowercase letter and one uppercase letter</li>
+                                <li id="spesChar">At least one special character or one number</li>
+                                <li id="stronkChar">Excellent password strength</li>
                             </ul>
                         </li>
                     </ul>
@@ -93,4 +94,5 @@
 </body>
 <script src="https://kit.fontawesome.com/47dbf3c43e.js" crossorigin="anonymous"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="../static/script.js"></script>
 </html>

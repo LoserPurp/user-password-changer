@@ -9,20 +9,25 @@ repeatPasswordInput.addEventListener('input', checkPassword);
 
 
 
-function updatePlaceHolder(input, placeholder) {
+function updatePlaceHolder(input) {
 
   var usernameInput = document.getElementById(input);
-  var placeholderParagraph = document.getElementById(placeholder);
-  
+  var placeholderParagraph = document.getElementById(input+'placeholder');
+  var hideshow = document.querySelector("#hideShow"+input)
+
+
+  hideshow.classList.add('hideShowFucused');
   placeholderParagraph.classList.add('placeholderWithText');
 
   document.getElementById(input).addEventListener('blur', function() {
       placeholderParagraph.classList.remove('placeholderWithText');
- 
+      hideshow.classList.remove('hideShowFucused');
       if (usernameInput.value !== "") {
         placeholderParagraph.classList.add('placeholderWithText');
+        hideshow.classList.add('hideShowFucused');
       } else {
         placeholderParagraph.classList.remove('placeholderWithText');
+        hideshow.classList.remove('hideShowFucused');
       }
  
     });
