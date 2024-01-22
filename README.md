@@ -2,8 +2,8 @@
 A simple web server built on the ldap3 python library that allows users to change their password
 
 <p align="center">
-  <img src="/img/image-black.png" width="500"/>
-  <img src="/img/image-white.png" width="500"/>
+  <img src="/img/image-black.png" width="300"/>
+  <img src="/img/image-white.png" width="300"/>
 </p>
 
 
