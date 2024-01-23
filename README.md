@@ -5,7 +5,7 @@ A simple web server built on the ldap3 python library that allows users to chang
   <img src="/img/image-black.png" width="300"/>
   <img src="/img/image-white.png" width="300"/>
 </p>
-<sub><sup>Pictures of Darkmode and Lightmode. You can change the color by uncommenting white mode and commenting out dark mode in the /static/styles.css file</sup></sub>
+<sub><sup>Pictures of Darkmode and Lightmode. You can select the mode when running the installer script</sup></sub>
 
 # About
 Do not expect any updates to this project after version 3.0.
