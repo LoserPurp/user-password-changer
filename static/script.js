@@ -54,14 +54,14 @@ try {
 // Runs on page load 
 checkPassword()
 function checkPassword() {
-  const newPassword = newPasswordInput.value;
+const newPassword = newPasswordInput.value;
   const repeatPassword = repeatPasswordInput.value;
 
   const strength = calculatePasswordStrength(newPassword);
 
   updateStrengthIndicator(strength);
 
-
+  
 
 
   if ((strength == 'strong') && newPassword == repeatPassword)  {
@@ -108,15 +108,15 @@ function calculatePasswordStrength(password) {
   }
 
   if (hasUppercase && hasLowercase && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
-    strengthLabel.innerHTML = "Excellent"
-    return 'strong'; 
+strengthLabel.innerHTML = "Excellent"
+    return 'strong';
   }
   else if (hasUppercase && hasLowercase) {
     strengthLabel.innerHTML = "Moderate"
     return 'medium';
   }
   else {
-    strengthLabel.innerHTML = "Weak"
+strengthLabel.innerHTML = "Weak"
     return 'weak';
   }
 }
@@ -131,9 +131,9 @@ function updateStrengthIndicator(strength) {
 var isPasswordVisible = false;
 
 function togglePassword(input) {
-  var hideshow = document.querySelector("#hideShow"+input)
+var hideshow = document.querySelector("#hideShow"+input)
   var passwordInput = document.getElementById(input);
-
+    
   isPasswordVisible = !isPasswordVisible;
 
   if (isPasswordVisible) {
