@@ -7,8 +7,6 @@ const strengthIndicator = document.getElementById('strengthIndicator');
 newPasswordInput.addEventListener('input', checkPassword);
 repeatPasswordInput.addEventListener('input', checkPassword);
 
-
-
 function updatePlaceHolder(input) {
 
   var usernameInput = document.getElementById(input);
@@ -101,10 +99,12 @@ function calculatePasswordStrength(password) {
 
   if ((newPassword && repeatPassword) && newPassword != repeatPassword) {
     toast('Both password feelds must match!')
+    document.getElementById("submitButton").disabled = "disabled"
   }
   else if ((newPassword && repeatPassword) && newPassword == repeatPassword) {
-      toastContainer = document.getElementById("toast")
-      toastContainer.remove()
+    document.getElementById("submitButton").disabled = ""
+    toastContainer = document.getElementById("toast")
+    toastContainer.remove()
   }
 
   if (hasUppercase && hasLowercase && hasSpecialChar && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && password.length >= 6 || hasUppercase && hasLowercase && hasNumber && hasSpecialChar && password.length >= 6) {
