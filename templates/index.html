@@ -11,20 +11,20 @@
 <body>
 <div class="formContainer" id="formContainer">
     <form id="formComposer" class="formComposer" autocomplete="off" method="post">
-            <p class="title">Change Your Password</p>
-            <div class="inputContainer inputContainerSpacing">
-                <input type="text" id="username" name="username" required onfocus="updatePlaceHolder('username')">
-                <div class="labelContainer">
-                    <p id="usernameplaceholder" class="placeholder">Username</p>
-                </div>
+        <p class="title">Change Your Password</p>
+        <div class="inputContainer inputContainerSpacing">
+            <input type="text" id="username" name="username" required onfocus="updatePlaceHolder('username')">
+            <div class="labelContainer">
+                <p id="usernameplaceholder" class="placeholder">Username</p>
             </div>
-            <div class="inputContainer inputContainerSpacing">
-                <input type="password" id="oldPassword" name="old_password" required onfocus="updatePlaceHolder('oldPassword')">
-                <div class="labelContainer">
-                    <p id="oldPasswordplaceholder" class="placeholder">Old Password</p>
-                    <p id="hideShowoldPassword"class="hideShow"  onmousedown="togglePassword('oldPassword')">Show</p>
-                </div>
+        </div>
+        <div class="inputContainer inputContainerSpacing">
+            <input type="password" id="oldPassword" name="old_password" required onfocus="updatePlaceHolder('oldPassword')">
+            <div class="labelContainer">
+                <p id="oldPasswordplaceholder" class="placeholder">Old Password</p>
+                <p id="hideShowoldPassword"class="hideShow"  onmousedown="togglePassword('oldPassword')">Show</p>
             </div>
+        </div>
         <div class="passwordContainer"> 
             <div class="inputContainer">
                 <input type="password" id="newPassword" name="new_password" required onfocus="updatePlaceHolder('newPassword')">
