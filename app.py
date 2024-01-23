@@ -32,14 +32,12 @@ def change_password(username, old_password, new_password):
         #Connects to the LDAP server
         with Connection(server, user=username + config["domain"], password=old_password, authentication=SIMPLE) as conn:
             print("Correct username and password")
-            connect = conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
-            print(f"connection status: {connect}")
+            conn.search(f'{config["searchGroup"]}',f'(&(sAMAccountName={username})'+str(config["searchUser"]), SUBTREE)
 
             if len(conn.entries) == 1:
                 user_dn = conn.entries[0].entry_dn
                 #Change user password
                 response = conn.extend.microsoft.modify_password(user_dn, new_password, old_password=None)
-                print(f'change: {response}')
                 if response == True:
                     return True
             else:
@@ -70,13 +68,13 @@ def index():
             return redirect("/")
         #If everything fails, return generic error message
         else:
-            flash('Incorrect username or password, contact your administrator if you believe', 'error')
+            flash('Incorrect username or password, contact your administrator if you believe this is an error!', 'error')
             return redirect("/")
 
     return render_template('index.html')
     
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port="7234")  #Do not use in production, only for debugging
+    serve(app, host="0.0.0.0", port=7234)
 
+    # app.run(debug=True, host="0.0.0.0", port="7234")  #Do not use in production, only for debugging
     # For use in production
-    # serve(app, host="0.0.0.0", port=7234)
