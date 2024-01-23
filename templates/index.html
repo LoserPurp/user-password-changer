@@ -9,18 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-        <div class="formContainer" id="formContainer">
-        <form id="formComposer" class="formComposer" autocomplete="off" method="post">
+<div class="formContainer" id="formContainer">
+    <form id="formComposer" class="formComposer" autocomplete="off" method="post">
             <p class="title">Change Your Password</p>
-            
             <div class="inputContainer inputContainerSpacing">
                 <input type="text" id="username" name="username" required onfocus="updatePlaceHolder('username')">
-            <div class="labelContainer">
+                <div class="labelContainer">
                     <p id="usernameplaceholder" class="placeholder">Username</p>
                 </div>
             </div>
-
-
             <div class="inputContainer inputContainerSpacing">
                 <input type="password" id="oldPassword" name="old_password" required onfocus="updatePlaceHolder('oldPassword')">
                 <div class="labelContainer">
@@ -28,20 +25,14 @@
                     <p id="hideShowoldPassword"class="hideShow"  onmousedown="togglePassword('oldPassword')">Show</p>
                 </div>
             </div>
-
-            <div class="passwordContainer"> 
-
-                
+        <div class="passwordContainer"> 
             <div class="inputContainer">
-                    <input type="password" id="newPassword" name="new_password" required onfocus="updatePlaceHolder('newPassword')">
-                    <div class="labelContainer">
+                <input type="password" id="newPassword" name="new_password" required onfocus="updatePlaceHolder('newPassword')">
+                <div class="labelContainer">
                     <p id="newPasswordplaceholder" class="placeholder">New Password</p>
                     <p id="hideShownewPassword" class="hideShow" onmousedown="togglePassword('newPassword')">Show</p>
                 </div>
-
-                </div>
-
-                            
+            </div>           
             <div class="inputContainer">
                 <input type="password" id="repeatPassword" name="repeat_password" required onfocus="updatePlaceHolder('repeatPassword')">
                     <div class="labelContainer">
@@ -49,34 +40,30 @@
                     <p id="hideShowrepeatPassword" class="hideShow" onmousedown="togglePassword('repeatPassword')">Show</p>
                 </div>
             </div>
-
-            </div>
-
-            <div id="passwordStrength">
-<div class="passwordStrengthAndLabel">
-                        <p>Password Strenght</p>
-                        <div class="bulletPoint"></div>
-                        <div class="passwordStrengthIndicator">
-                <div id="strengthIndicator"></div>
+        </div>
+        <div id="passwordStrength">
+            <div class="passwordStrengthAndLabel">
+                    <p>Password Strenght</p>
+                    <div class="bulletPoint"></div>
+                <div class="passwordStrengthIndicator">
+                    <div id="strengthIndicator"></div>
                 </div>
-                        <div class="bulletPoint"></div>
-                        <p id="StrenghtLabel">Weak</p>
-                    </div>
-                    <ul class="passwordSpecs">
-                        <li style="list-style: none;color: var(--text-color);">Must consist of
-                            <ul style="padding: 0 0 0 16px;">
-                                <li id="6Char">Minimum six characters</li>
-                            <li id="caseChar">At least one lowercase letter and one uppercase letter</li>
-                            <li id="spesChar">At least one special character or one number</li>
-                                <li id="stronkChar">Excellent password strength</li>
+                    <div class="bulletPoint"></div>
+                    <p id="StrenghtLabel">Weak</p>
+            </div>
+            <ul class="passwordSpecs">
+                <li style="list-style: none;color: var(--text-color);">Must consist of
+                    <ul style="padding: 0 0 0 16px;">
+                        <li id="6Char">Minimum six characters</li>
+                        <li id="caseChar">At least one lowercase letter and one uppercase letter</li>
+                        <li id="spesChar">At least one special character or one number</li>
+                        <li id="stronkChar">Excellent password strength</li>
                     </ul>
-                  </li>
-                    </ul>
-                    
-
-              </div>
-                <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
-        </form>
+                </li>
+            </ul>
+        </div>
+        <button class="buttonChange" id="submitButton" method="POST" action="/" disabled>Change Password</button>
+    </form>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% for category, message in messages %}
                 <ul class="messages toast">
@@ -84,12 +71,12 @@
                 </ul>
             {% endfor %}
         {% endwith %}
-    </div>
-    <footer>
-        <a href="https://github.com/LoserPurp" target="_blank"><p class="footerText">Made by LoserPurp</p></a>
-        <a href="https://github.com/OlaYZen" target="_blank"><p class="footerText">Styling by OlaYZen</p></a>
-        <a href="https://github.com/LoserPurp/user-password-changer" target="_blank"><p class="footerText">Github</p></a>
-    </footer>
+</div>
+<footer>
+    <a href="https://github.com/LoserPurp" target="_blank"><p class="footerText">Made by LoserPurp</p></a>
+    <a href="https://github.com/OlaYZen" target="_blank"><p class="footerText">Styling by OlaYZen</p></a>
+    <a href="https://github.com/LoserPurp/user-password-changer" target="_blank"><p class="footerText">Github</p></a>
+</footer>
 </body>
 <script src="https://kit.fontawesome.com/47dbf3c43e.js" crossorigin="anonymous"></script>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
