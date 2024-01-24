@@ -68,7 +68,7 @@ def index():
             flash('Incorrect username or password, contact your administrator if you believe this is an error!', 'error')
             return redirect("/")
 
-    return render_template('index.html')
+    return render_template('index.html', css_file=config["style"])
     
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=7234)

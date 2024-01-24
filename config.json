@@ -3,5 +3,6 @@
     "serverAdress": "ldaps://server-ip:636",
     "domain": "@example",
     "searchGroup": "OU=users,DC=example,DC=com",
-    "searchUser": "(memberOf=CN=ChangePassword,OU=groups,DC=example,DC=com))"
+    "searchUser": "(memberOf=CN=ChangePassword,OU=groups,DC=example,DC=com))",
+    "style": "darkmode.css"
 }
