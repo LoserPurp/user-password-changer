@@ -155,12 +155,6 @@ try {
   toastContainer.remove()
 } catch (error) {}
 
-// Fill in with relevant information
-// Or change if needed
-  if(!message){
-    message = "NULL"
-  }
-
   var toastContainer = document.createElement('div');
   toastContainer.className = 'toast';
   toastContainer.id = 'toast';
