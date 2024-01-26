@@ -1,0 +1,27 @@
+:root{
+    --primary-color: #c8c6c3 !important;
+    --secondary-color: #ffffff !important;
+    --tertiary-color: #fafafa !important;
+    --quaternary-color: #a3a0a1 !important;
+
+
+    --toast-message: #e5e5e5 !important;
+    --placeholder-color: #686566 !important;
+    --input-border: #d8d8d8 !important;
+    --hide-show-color: #000000 !important;
+    --password-strength-color: #e2e2e2 !important;
+    --password-strength-Indicator: #bdbdbd !important;
+
+
+    --text-color: black !important;
+    --reverse-text-color: white !important;
+    --White: white !important;
+    --Black: rgb(36, 36, 36) !important;
+    
+    --ok-button-color: #6928c6 !important;
+    --ok-button-hover-color: #9bbb58 !important;
+
+    --weak-password-indicator: #f73f36 !important;
+    --medium-password-indicator: #d39a0b !important;
+    --strong-password-indicator: #24ce53 !important;
+}

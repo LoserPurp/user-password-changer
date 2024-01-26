@@ -1,23 +1,23 @@
 :root{
-    --primary-color: #c8c6c3;
-    --secondary-color: #ffffff;
-    --tertiary-color: #fafafa;
+    --primary-color: #111111;
+    --secondary-color: #2c292a;
+    --tertiary-color: #242122;
     --quaternary-color: #a3a0a1;;
 
 
-    --toast-message: #e5e5e5;
+    --toast-message: #252525;
     --placeholder-color: #686566;
-    --input-border: #d8d8d8;
-    --hide-show-color: #000000;
+    --input-border: #403d3e;
+    --hide-show-color: #c5c5c5;
     --password-strength-color: #e2e2e2;
-    --password-strength-Indicator: #bdbdbd;
+    --password-strength-Indicator: var(var(--secondary-color));
 
 
-    --text-color: black;
-    --reverse-text-color: white;
+    --text-color: white;
+    --reverse-text-color: black;
     --White: white;
-    --Black: rgb(36, 36, 36);
-    
+    --Black: black;
+
     --ok-button-color: #6928c6;
     --ok-button-hover-color: #9bbb58;
 
@@ -330,6 +330,7 @@ a {
         flex-direction: column;
     }
     footer {
+        font-size: 11px;
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -377,7 +378,35 @@ a {
     div#passwordStrength {
         font-size: 9px;
     }
+}
 
+@media (max-width: 355px){
+    html, body {
+        height: 100%;
+    }
+}
+
+@media (max-width: 330px){
+    p, .buttonChange {
+        margin: 10px 0 10px 0;
+        font-size: small;
+    }
+    .passwordStrengthIndicator {
+        align-self: flex-start;
+    }
+    .passwordStrengthAndLabel {
+        display: flex;
+        flex-direction: column;
+    }
+    .bulletPoint {
+        display: none;
+    }
+    .inputContainerSpacing {
+        margin-bottom: 4px;
+    }
+    input {
+        font-size: x-small;
+    }
 }
 
 @media (max-width: 370px){
@@ -397,3 +426,22 @@ a {
         height: 100%;
     }
 }
+
+@media (max-height: 560px){
+    ul.passwordSpecs {
+        font-size: 10px;
+    }
+    title {
+        padding: 0;
+    }
+    .formComposer {
+        padding: 10px;
+    }
+    .formContainer {
+        justify-content: flex-start;
+    }
+    .formComposer {
+        max-width: max-content;
+    }
+}
+
